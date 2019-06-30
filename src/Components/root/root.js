@@ -19,7 +19,7 @@ class root extends React.Component {
         var parsed = queryString.parse(this.props.location.search);
 
         if (this.props.location.search) {
-            axios.get('http://66.68.130.115:5000/?stuff=' + parsed.code)
+            axios.get('http://66.68.130.115:5000/login?bearer=' + parsed.code)
                 .then(response => {
                     //console.log(response.data);
                     const cookies = new Cookies();
