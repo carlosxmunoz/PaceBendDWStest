@@ -1,5 +1,4 @@
 import React from "react";
-import { Toolbar } from "@material-ui/core";
 import { Redirect } from "react-router-dom";
 import axios from 'axios';
 import Cookies from 'universal-cookie';
@@ -9,11 +8,6 @@ class root extends React.Component {
 
 
     render() {
-
-        const cookies = new Cookies();
-
-
-
         // TODO Send backend this this.props.location.search
         const queryString = require('query-string');
         var parsed = queryString.parse(this.props.location.search);
@@ -34,14 +28,12 @@ class root extends React.Component {
                 });
         }
 
-        console.log('search props', this.props)
-        console.log('parsed.code', parsed.code)
         if (parsed.code) {
             return <Redirect to='/home' />
         } else {
             const cookies = new Cookies();
-            if (cookies.get('cuckie') == null || cookies.get('cuckie') == '') {
-                console.log('checkin for cookie');
+            if (cookies.get('cuckie') === null || cookies.get('cuckie') === '') {
+                //console.log('checkin for cookie');
             }
             return <Redirect to='/login' />
         }

@@ -4,6 +4,12 @@ import "./searchHeader.css";
 import { Redirect } from "react-router-dom";
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+import SearchBar from 'material-ui-search-bar'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { thisExpression } from "@babel/types";
+
+
+
 
 
 
@@ -19,6 +25,10 @@ class searchHeader extends React.Component {
         }
     }
 
+    search() {
+        window.location.href = "search?q=" + this.state.q;
+    }
+
     render() {
 
         const imageClick = () => {
@@ -28,6 +38,9 @@ class searchHeader extends React.Component {
         const close_window = () => {
             window.close();
         };
+        const queryString = require('query-string');
+
+        var parsed = queryString.parse(this.props.location.search);
 
         return (
 
@@ -40,6 +53,21 @@ class searchHeader extends React.Component {
                             onClick={() => imageClick()}
                         />
                     </div>
+                    <div className="search-container">
+                        <MuiThemeProvider>
+                            <SearchBar
+                                value = {parsed.q}
+                                onChange={(onChange) => this.setState({ q: onChange })}
+                                onRequestSearch={() => this.search()}
+                                style={{
+                                    margin: '0 auto',
+                                    maxWidth: 800
+                                }}
+                            />
+                        </MuiThemeProvider>
+                    </div>
+
+
                     <div className="header-component-close-container">
                         {/* <Close className="close-button" onClick={() => close_window()}></Close> */}
                     </div>
