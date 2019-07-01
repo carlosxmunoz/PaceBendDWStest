@@ -41,6 +41,25 @@ class searchHeader extends React.Component {
         const queryString = require('query-string');
 
         var parsed = queryString.parse(this.props.location.search);
+        const cookies = new Cookies();
+
+
+        let search;
+        if (cookies.get('cuckie')) {
+            search = <div className="search-container">
+                <MuiThemeProvider>
+                    <SearchBar
+                        value={parsed.q}
+                        onChange={(onChange) => this.setState({ q: onChange })}
+                        onRequestSearch={() => this.search()}
+                        style={{
+                            margin: '0 auto',
+                            maxWidth: 800
+                        }}
+                    />
+                </MuiThemeProvider>
+            </div>;
+        }
 
         return (
 
@@ -53,21 +72,7 @@ class searchHeader extends React.Component {
                             onClick={() => imageClick()}
                         />
                     </div>
-                    <div className="search-container">
-                        <MuiThemeProvider>
-                            <SearchBar
-                                value = {parsed.q}
-                                onChange={(onChange) => this.setState({ q: onChange })}
-                                onRequestSearch={() => this.search()}
-                                style={{
-                                    margin: '0 auto',
-                                    maxWidth: 800
-                                }}
-                            />
-                        </MuiThemeProvider>
-                    </div>
-
-
+                    {search}
                     <div className="header-component-close-container">
                         {/* <Close className="close-button" onClick={() => close_window()}></Close> */}
                     </div>

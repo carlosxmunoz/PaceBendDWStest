@@ -5,6 +5,10 @@ import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableHead from '@material-ui/core/TableHead';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
+import { Redirect } from "react-router-dom";
+
+
 
 
 class searchResults extends React.Component {
@@ -59,6 +63,13 @@ class searchResults extends React.Component {
     }
 
     render() {
+        const cookies = new Cookies();
+
+        if (cookies.get('cuckie') == null) {
+            return <Redirect to='/login' />
+        } 
+        console.log('cuckie', cookies.get('cuckie') )
+
         return (<div>
             <Table>
                 <TableHead>
