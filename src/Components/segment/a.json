@@ -1,0 +1,55 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+      {
+          "type": "Feature",
+          "id": "01",
+          "properties": {
+              "name": "U1",
+              "color": "red"
+          },
+          "geometry": {
+              "type": "MultiLineString",
+              "coordinates": [
+                  [
+                      48.1423652,
+                      16.3999045
+                  ],
+                  [
+                      48.1458145,
+                      16.3856390
+                  ],
+                  [
+                      48.1537071,
+                      16.3824464
+                  ]
+              ]
+          }
+      },
+      {
+          "type": "Feature",
+          "id": "02",
+          "properties": {
+              "name": "U2",
+              "color": "#9933ff"
+          },
+          "geometry": {
+              "type": "MultiLineString",
+              "coordinates": [
+                  [
+                      48.2262470,
+                      16.5084951
+                  ],
+                  [
+                      48.2345713,
+                      16.5044830
+                  ],
+                  [
+                      48.2334553,
+                      16.4854766
+                  ]
+              ]
+          }
+      }
+  ]
+}
