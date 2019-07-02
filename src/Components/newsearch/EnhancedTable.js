@@ -18,6 +18,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import axios from 'axios';
+import PinDropIcon from '@material-ui/icons/PinDrop';
 
 
 function desc(a, b, orderBy) {
@@ -207,7 +208,10 @@ export default function EnhancedTable() {
       }
       setSelected([]);
     }
-
+    function handlePinClick(event, row) {
+      console.log(row);
+      window.open("https://www.google.com/maps/place/"+ row.start_latlng[0] + "," + row.start_latlng[1] + "//@" + row.start_latlng[0] + "," + row.start_latlng[1] +",17z");
+    }
     function handleClick(event, name) {
       const selectedIndex = selected.indexOf(name);
       let newSelected = [];
@@ -292,8 +296,11 @@ export default function EnhancedTable() {
                           inputProps={{ 'aria-labelledby': labelId }}
                         />
                       </TableCell> */}
-                        <TableCell component="th" id={labelId} scope="row">
-                          {row.name}
+                        <TableCell component="th" id={labelId} scope="row" style={{ position: 'relative' }}>
+                          <PinDropIcon className="material-icons"
+                            style={{ position: 'absolute', bottom: '14px' }}
+                            onClick={event => handlePinClick(event, row)} />
+                          <div className="name" style={{ paddingLeft: '24px', }}>{row.name}</div>
                         </TableCell>
                         <TableCell align="right">{(row.distance * 0.000621371).toFixedDown(2)} miles</TableCell>
                         <TableCell align="right">{(row.average_grade).toFixedDown(2)}</TableCell>
