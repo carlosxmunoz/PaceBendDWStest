@@ -46,8 +46,8 @@ function getSorting(order, orderBy) {
 
 const headRows = [
   { id: 'name', numeric: false, disablePadding: false, label: 'Trail' },
-  { id: 'average_grade', numeric: true, disablePadding: false, label: 'Average Grade' },
   { id: 'distance', numeric: true, disablePadding: false, label: 'Distance' },
+  { id: 'average_grade', numeric: true, disablePadding: false, label: 'Average Grade' },
   { id: 'city', numeric: true, disablePadding: false, label: 'City' },
   { id: 'state', numeric: true, disablePadding: false, label: 'State' },
 ];
@@ -295,8 +295,8 @@ export default function EnhancedTable() {
                         <TableCell component="th" id={labelId} scope="row">
                           {row.name}
                         </TableCell>
-                        <TableCell align="right">{(row.average_grade).toFixedDown(2)}</TableCell>
                         <TableCell align="right">{(row.distance * 0.000621371).toFixedDown(2)} miles</TableCell>
+                        <TableCell align="right">{(row.average_grade).toFixedDown(2)}</TableCell>
                         <TableCell align="right">{row.city}</TableCell>
                         <TableCell align="right">{row.state}</TableCell>
                       </TableRow>
