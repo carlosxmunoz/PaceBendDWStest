@@ -2,13 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Route, BrowserRouter as Router} from "react-router-dom";
 import './index.css';
-//import App from './App';
 import searchHeader from './Components/searchHeader/searchHeader';
 import login from './Components/login/login';
 import home from './Components/home/home';
 import root from './Components/root/root';
 import searchResults from './Components/searchResults/searchResults';
-
+import EnhancedTable from './Components/newsearch/EnhancedTable'
 import * as serviceWorker from './serviceWorker';
 // import components I want to use
 
@@ -18,7 +17,8 @@ const routing = (
             <Route exact path = "/" component = {root} />
             <Route path = "/" component = {searchHeader} />
             <Route path = "/login" component = {login} />
-            <Route path = "/search" component = {searchResults} />
+            {/* <Route path = "/search" component = {searchResults} /> */}
+            <Route path = "/search" component = {EnhancedTable} />
 
             <Route exact path ="/home" component = {home} />
             {/* <Route exact path ="/auth/" component = {auth}/> */}

@@ -67,17 +67,18 @@ class searchResults extends React.Component {
 
         if (cookies.get('cuckie') == null) {
             return <Redirect to='/login' />
-        } 
-        console.log('cuckie', cookies.get('cuckie') )
+        }
+        console.log('cuckie', cookies.get('cuckie'))
 
         return (<div>
             <Table>
                 <TableHead>
                     <TableRow>
                         <TableCell>Trail System</TableCell>
-                        <TableCell align="center">City</TableCell>
-                        <TableCell align="center">State</TableCell>
-                        <TableCell align="center">Country</TableCell>
+                        <TableCell onClick={() => sortState('distance')} align="right">Distance</TableCell>
+                        <TableCell onClick={() => sortState('city')} align="center">City</TableCell>
+                        <TableCell onClick={() => this.state.data.sort(compareValues('state'))} align="center">State</TableCell>
+                        <TableCell onClick={() => this.state.data.sort(compareValues('distance'))} align="center">Country</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>{tablenode.bind(this)()}</TableBody>
@@ -89,6 +90,13 @@ class searchResults extends React.Component {
         );
     }
 
+}
+
+function sortState(a) {
+    if (this.state.data) {
+        this.state.data.sort(compareValues(a))
+    }
+    console.log('Sorting', a);
 }
 
 // async function getJSONAsync() {
@@ -106,25 +114,61 @@ class searchResults extends React.Component {
 //     // We return it just like in a regular synchronous function.
 // }
 
+Number.prototype.toFixedDown = function (digits) {
+    var re = new RegExp("(\\d+\\.\\d{" + digits + "})(\\d)"),
+        m = this.toString().match(re);
+    return m ? parseFloat(m[1]) : this.valueOf();
+};
+// function for dynamic sorting
+function compareValues(key, order = 'asc') {
+    return function (a, b) {
+        if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+            // property doesn't exist on either object
+            return 0;
+        }
 
+        const varA = (typeof a[key] === 'string') ?
+            a[key].toUpperCase() : a[key];
+        const varB = (typeof b[key] === 'string') ?
+            b[key].toUpperCase() : b[key];
+
+        let comparison = 0;
+        if (varA > varB) {
+            comparison = 1;
+        } else if (varA < varB) {
+            comparison = -1;
+        }
+        return (
+            (order == 'desc') ? (comparison * -1) : comparison
+        );
+    };
+}
 function tablenode() {
     //console.log('yeet', this.state);
     if (this.state.data) {
+        this.state.data.sort(compareValues('distance'));
+
+
+
         return this.state.data.map((row, index) => [
             <TableRow
                 hover
                 style={{ cursor: "pointer" }}
             >
                 <TableCell component="th" scope="row">{row.name}</TableCell>
+                <TableCell align="right">{(row.distance * 0.000621371).toFixedDown(2)} miles</TableCell>
                 <TableCell align="center">{row.city}</TableCell>
                 <TableCell align="center">{row.state}</TableCell>
                 <TableCell align="center">{row.country}</TableCell>
             </TableRow>
         ])
+            //.sort(compareValues('distance'))
             .sort(a => (this.state.reverse ? -1 : 1));
     }
-
 }
+
+
+
 
 const rows = [
     createData('Walnut Park', 159, 6.0, [createData("Inner Log Loop", 14, 24), createData("Outer Log Loop", 11, 22)]),
