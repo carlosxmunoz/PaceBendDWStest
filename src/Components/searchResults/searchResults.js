@@ -89,7 +89,6 @@ class searchResults extends React.Component {
         </div>
         );
     }
-
 }
 
 function sortState(a) {
@@ -166,9 +165,6 @@ function tablenode() {
             .sort(a => (this.state.reverse ? -1 : 1));
     }
 }
-
-
-
 
 const rows = [
     createData('Walnut Park', 159, 6.0, [createData("Inner Log Loop", 14, 24), createData("Outer Log Loop", 11, 22)]),

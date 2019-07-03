@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { Redirect } from "react-router-dom";
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import { lighten, makeStyles } from '@material-ui/core/styles';
@@ -19,6 +19,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import axios from 'axios';
 import PinDropIcon from '@material-ui/icons/PinDrop';
+import RemoveRedEye from '@material-ui/icons/RemoveRedEye';
+import { Route } from 'react-router-dom'
+
 
 
 function desc(a, b, orderBy) {
@@ -171,6 +174,15 @@ export default function EnhancedTable() {
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
   const [data, setData] = React.useState([]);
   const [nullResults, setNullResults] = React.useState(false);
+  const [redirect, setRedirect] = React.useState(false);
+  const [selectedRow, setSelectedRow] = React.useState(null);
+
+
+  function renderRedirect() {
+    if (redirect) {
+      return <Redirect to='/search?q=austin' />
+    }
+  }
 
   useEffect(() => {
     const queryString = require('query-string');
@@ -209,9 +221,14 @@ export default function EnhancedTable() {
       setSelected([]);
     }
     function handlePinClick(event, row) {
-      console.log(row);
-      window.open("https://www.google.com/maps/place/"+ row.start_latlng[0] + "," + row.start_latlng[1] + "//@" + row.start_latlng[0] + "," + row.start_latlng[1] +",17z");
+      window.open("https://www.google.com/maps/place/" + row.start_latlng[0] + "," + row.start_latlng[1] + "//@" + row.start_latlng[0] + "," + row.start_latlng[1] + ",17z");
     }
+
+    function handleEyeClick(event, row) {
+      setSelectedRow(row);
+      setRedirect(true);
+    }
+
     function handleClick(event, name) {
       const selectedIndex = selected.indexOf(name);
       let newSelected = [];
@@ -253,7 +270,9 @@ export default function EnhancedTable() {
     const isSelected = name => selected.indexOf(name) !== -1;
 
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
-
+    // if (redirect) {
+    //   return <Redirect to='/search?q=austin' />
+    // }
     return (
 
       <div className={classes.root}>
@@ -297,10 +316,21 @@ export default function EnhancedTable() {
                         />
                       </TableCell> */}
                         <TableCell component="th" id={labelId} scope="row" style={{ position: 'relative' }}>
-                          <PinDropIcon className="material-icons"
-                            style={{ position: 'absolute', bottom: '14px' }}
-                            onClick={event => handlePinClick(event, row)} />
-                          <div className="name" style={{ paddingLeft: '24px', }}>{row.name}</div>
+                          <div>
+                            <PinDropIcon className="material-icons"
+                              style={{ position: 'absolute', bottom: '14px' }}
+                              onClick={event => handlePinClick(event, row)} />
+  
+
+                            <Route render={({ history }) => (
+                              <RemoveRedEye
+                                style={{ position: 'absolute', left: '36px', bottom: '14px' }}
+                                onClick={() => { history.push(`/segment?id=${row.id}`, row) }} />
+                            )} />
+
+
+                            <div className="name" style={{ paddingLeft: '48px', }}>{row.name}</div>
+                          </div>
                         </TableCell>
                         <TableCell align="right">{(row.distance * 0.000621371).toFixedDown(2)} miles</TableCell>
                         <TableCell align="right">{(row.average_grade).toFixedDown(2)}</TableCell>
