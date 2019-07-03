@@ -7,8 +7,9 @@ import login from './Components/login/login';
 import home from './Components/home/home';
 import root from './Components/root/root';
 import searchResults from './Components/searchResults/searchResults';
-import EnhancedTable from './Components/newsearch/EnhancedTable'
-import map from './Components/segment/segment'
+import EnhancedTable from './Components/newsearch/EnhancedTable';
+import segmentParent from './Components/segmentParent/segmentParent';
+
 import * as serviceWorker from './serviceWorker';
 // import components I want to use
 
@@ -22,7 +23,7 @@ const routing = (
             <Route path = "/search" component = {EnhancedTable} />
 
             <Route exact path ="/home" component = {home} />
-            <Route exact path ="/segment" component = {map} />
+            <Route exact path ="/segment" component = {segmentParent} />
 
             {/* <Route exact path ="/auth/" component = {auth}/> */}
         </div>
