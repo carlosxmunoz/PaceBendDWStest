@@ -61,7 +61,7 @@ class Maps extends Component {
         this.state = {
             // lat: 51.505,
             // lng: -0.09,
-            zoom: 16,
+            zoom: 17,
             // geojsonDataByLines: geojsonDataByLines
         }
     }

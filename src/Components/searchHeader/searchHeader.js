@@ -26,13 +26,17 @@ class searchHeader extends React.Component {
     }
 
     search() {
-        window.location.href = "search?q=" + this.state.q;
+        if (this.state && this.state.q) {
+            window.location.href = "search?q=" + this.state.q;
+        }
+        window.location.href = "search";
+
     }
 
     render() {
 
         const imageClick = () => {
-            this.openUrl("https://yahoo.com");
+            this.search();
         }
 
         const close_window = () => {
