@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Redirect } from "react-router-dom";
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -10,16 +10,11 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import Checkbox from '@material-ui/core/Checkbox';
-import Tooltip from '@material-ui/core/Tooltip';
+
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import axios from 'axios';
-import PinDropIcon from '@material-ui/icons/PinDrop';
-import RemoveRedEye from '@material-ui/icons/RemoveRedEye';
 import { Route } from 'react-router-dom'
 import { ReactComponent as Map } from '../../assets/map.svg';
 import { ReactComponent as Pin } from '../../assets/pin.svg';
@@ -68,14 +63,6 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        {/* <TableCell padding="checkbox">
-          <Checkbox
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{ 'aria-label': 'Select all desserts' }}
-          />
-        </TableCell> */}
         {headRows.map(row => (
           <TableCell
             key={row.id}
@@ -273,9 +260,7 @@ export default function EnhancedTable() {
     const isSelected = name => selected.indexOf(name) !== -1;
 
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
-    // if (redirect) {
-    //   return <Redirect to='/search?q=austin' />
-    // }
+
     return (
 
       <div className={classes.root}>
@@ -312,12 +297,6 @@ export default function EnhancedTable() {
                         key={row.name}
                         selected={isItemSelected}
                       >
-                        {/* <TableCell padding="checkbox">
-                        <Checkbox
-                          checked={isItemSelected}
-                          inputProps={{ 'aria-labelledby': labelId }}
-                        />
-                      </TableCell> */}
                         <TableCell component="th" id={labelId} scope="row" style={{ position: 'relative' }}>
                           <div>
                             <Pin
@@ -341,7 +320,7 @@ export default function EnhancedTable() {
                                 }}
                                 onClick={() => { history.push(`/segment?id=${row.id}`, row) }}
                               />
-                            )}/>
+                            )} />
                             <div className="name" style={{ paddingLeft: '68px', }}>{row.name}</div>
                           </div>
                         </TableCell>
