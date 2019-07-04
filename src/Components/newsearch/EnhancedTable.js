@@ -301,10 +301,10 @@ export default function EnhancedTable() {
                           <div>
                             <Pin
                               style={{
-                                width: "36px",
-                                height: "36px",
+                                width: "28px",
+                                height: "28px",
                                 position: 'absolute',
-                                bottom: '5px'
+                                bottom: '9px'
                               }}
                               onClick={event => handlePinClick(event, row)} />
 
@@ -312,16 +312,16 @@ export default function EnhancedTable() {
                             <Route render={({ history }) => (
                               <Map
                                 style={{
-                                  width: "36px",
-                                  height: "36px",
+                                  width: "28px",
+                                  height: "28px",
                                   position: 'absolute',
-                                  left: '48px',
-                                  bottom: '3px'
+                                  left: '42px',
+                                  bottom: '8px'
                                 }}
                                 onClick={() => { history.push(`/segment?id=${row.id}`, row) }}
                               />
                             )} />
-                            <div className="name" style={{ paddingLeft: '68px', }}>{row.name}</div>
+                            <div className="name" style={{ paddingLeft: '56px', }}>{row.name}</div>
                           </div>
                         </TableCell>
                         <TableCell align="right">{(row.distance * 0.000621371).toFixedDown(2)} miles</TableCell>
