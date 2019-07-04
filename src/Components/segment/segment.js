@@ -116,6 +116,16 @@ class Maps extends Component {
         return points
     }
 
+    findCenter(points) {
+        let x_sum = 0
+        let y_sum = 0
+        var i;
+        for (i=0; i < points.length; i++) {
+            x_sum += points[i][0];
+            y_sum += points[i][1];            
+        }
+        return [(x_sum/(points.length)),(y_sum/(points.length))]
+    }
     render() {
         // const position = [this.state.lat, this.state.lng];
         // const polyline = "wupxDb~esQuA|AUHQAGDm@nAi@`@UNEFEl@J|@C^AJ_@v@Mh@?JDJVd@?^IZi@~@o@^EJ?JBFZPBJFFDZA^g@Jc@ASDa@B_@RCH?FFDb@HDN?FEFAFLPFABC@QDGDD@VCXLRDX?LFFD?@OLc@A[PEVOD@@FAHUd@AF@JJEFQFEFERAFDHNNBL?L[\\W?IHGJ?HHAZUHUCMBUTk@\\?LEHEFUNGEg@OG?UHKTSVMTe@f@c@^W?EETk@ZDHEL[HCPMDM?MHa@AIIMOIKADS@[G[IQEGSCQ?KDM^OFQP_@v@o@p@MV[XI`@AHDZ^H^?TJE\\Ff@?\\BJTNNBHATa@^_@BIFGPIJQNMRE\\MHB\\ZHADGHUDCLWAa@z@c@HOf@g@FKHITKb@KTMTOj@k@r@[TOh@k@bAyATi@Lk@B]Bu@CO?cBQq@MYSSIAKOAQBUAMGSAQZAXPN@N?XIBIGg@IMEMOIAKL[Pw@h@g@H?LTLF`@?NHb@l@XRX@FGFAXNP?FI@OFCDGBWN@No@FIp@Of@YBKEGKGMCCEVe@`@_@LO?]DMTQ~@e@XI\\?n@TR@TFvAh@b@f@PLTJNCJYHK?MK_@HOVU@WISSUWGCEGe@Sm@A_@CMECAQFQ\\SF?HHHp@FFPNH?VHDL@HKf@Cd@?HBN@t@Hb@HJXNDFBTEd@AV[Xa@R[?a@ESDS\\UJECEc@CQEGOE]]_@QEO?UGCo@ISDQEUACDWp@Mf@i@l@e@`@CD?REP]T?FH@PGZAFH?DCFKF]HMNm@jDk@|A_@xA?`@HLlAPn@l@HPI`@IJM@OEUMQCG@WZGBG?c@OODEJDJRLDHHd@DBNGFBJAV_@FEH?h@Np@ZNNZLXVLV@TIHi@GYMa@Ag@@aAF]JS@OAe@Oi@AYBMAKKEO?]DW@a@@ENIh@k@@]KSEAo@FOFKPKt@[p@Ef@F`@FDR@LDVBRAb@DTVHRLPPX@TMZAPAx@Cf@?j@G|@@P`@bA@JCLGLUTSNMBiA|@WIGKIs@GSKQmAq@KAKDM`@]^IPWZYb@qAxAWJMGS@y@d@Sh@EZ]p@Ur@INIDMGGWAI?KIW?UBEZDPGNa@^c@Jy@LI`@ETI\\ARWBMLMHBb@UBKb@w@J[b@QDI@IEOIAMXS@KCUBKd@IJG@EHEPEDWBEBMVWXG?SFG?QPK@KEM?I@OREJAJ?XCJIFUHEF?JEF[CORIDKAUQOSFu@HKDEH?d@ZJ?HCFIBIJGBMGMAM@MRBVC@KJWJEb@k@BK@WFYHILANQDBDTHJNCBITMDGAMCGAWGUIGI@wBtAURkEtEGHKZGv@FXDFVRf@FRNHLFb@HhAN~@?NO^Wj@GFG@GAGGMWCMAe@@KLMF?HDN?Ae@Yg@Me@U[GUIE@XNVBf@DFLAHH?DEPCB]EOQBQDE?IEECUIUIm@MSAWS]G_@MYCQM_@AQD}@FS\\OD@?LITMP@VDBJGb@a@j@_@JCLKHCTSt@KVMRSLSNMH]LGBIl@c@r@UJGHUDYNWLOTFLNDPKFCRFHLA~AsAr@c@XSd@o@Js@NMPEP@hADvDHlB?^DX@\\GTOPSHAZBLAt@SP@JAFQDo@RQJ_@DCEE_@IM@ED?DHR@Hc@b@KDI?EC?SFSAIN_@EQCEGBKZG@EACG@KHUAEWEWJEAEE?EPKBEIAMOSCGCCSBGJBv@b@F?HJh@\\JJFDDAr@u@BM@YRYHe@LYBKGIEA_@DG?QGUMQAKn@]XCB?REHu@B_@CW@GAEOF_@O_@GEQ?]MIIEIAM@MD[FMHGJCHAd@FJ[BQFGJSFGLDJOEW?KEETLr@XRKD?JBHHGLWLIPOPHDLCHD?HGLDDRBDDHPFAFILYXMBMIWBOHMTKFA\\XH^FFPDNGDB@HCPEDWFGF?HLJ@FCFMH[HCBEL@P?DDDJEHKFEPA\\[l@_BD[CG[QOQQGGAEFBFGDE?_@Um@WGGI@e@RGK@GBCNE?Cc@GMGe@DQKI?EGKEO?GG?QKM?IFAVLVAEIa@OCGCYBOBLDDZRPD`Ap@`@L\\BTHz@`@`Bp@^XLEFM@_@C_@U}@MM]Eg@OUS}@By@JK@YNEACEN_@HGPGDGbAUb@EDEG[KAM@[LI@EAAI@KLODSJODAPL\\DVETMRULI@KCM?KFU@OKS[QEQIqA@oADa@?M[MSCKICCBEQu@ECM@YTc@PQ?c@LQPIBu@?OCKIi@yAIY?SZq@BYDEF?TV@DCTUTAFFFRBDDLh@PXDBL?LIAI_@MKO?g@CQEMDLBBJMPm@Jo@ASEGPSDWAGGGKEI?CDCd@K\\?VELGJM@KIAMV_A?a@KO]Sk@e@UKW?OHKLGP@DJHPB\\?JBd@TFTKx@WZOj@IHI?AK@GRm@JIBG?SCGWIEEM_@KMMGE@GH?\\Tf@@L[TA^IZg@`Ac@Ja@XW?OCUk@a@QK?c@SQCEEEUGG]EU[EEG?E@OPGV@PDDJ@BDADUTKh@ELKJg@JmBPQ?YCWKIM?YZ_ANUj@OhAI^JDHR?JO@m@VWJSFEj@RRV\\BDBBLFH\\Nd@F\\XTJPDN?NCFEFY?SEI?GRMHQIACEEEAKBGJQBa@He@AMWMGQ@KJc@DADB?FILBFLMR?HCDG@ICCMASME?[RODYAeALKFQRE?AE@KPa@f@EPBBIUOAIGAWJQN]DGB@JCHDLHDBNAF[JAD?HRJT?VG^_@DANH`@^@HCVILKc@K?KLFP?HKB[QI?G@QR@Fn@FTJD?TOz@kAFCCR?NQNCXOVUBCJC\\JJF@DHADGDKAEE[g@IE]AWSQEIEAGLUAOII_@GaAF]To@XUFKA{@b@IEMa@KGK?_@FK?i@Kc@BUFcAAg@LG?y@W{@FKEOQ_@@KDe@h@u@f@QRMTALCt@@Fj@WN_@@EMY?ONAD@BBCb@B@LYVKNKDM@[DEHB^XP@FOFED?F?`@P^C^@ZBRFb@O`@?RQNAH@BHBPIVG@YSOAS?g@LU@MIWIm@?OCI?KDAJFFZJBD@LKHG@KCQOEAQ?[EI@}@Xa@VKNCNNZE@KCKDICUOQCYJEZJZ?HXXXJj@DHG|@a@b@G\\OZCNy@DIb@YZFFGFOPI`@Al@ILF^`@FBF?HIV_@FEAH";
@@ -127,9 +137,12 @@ class Maps extends Component {
         for (i = 0; i < polylinePointsDict.length; i++) {
             polylinePoints.push([polylinePointsDict[i].latitude, polylinePointsDict[i].longitude]);
         }
-        const position = polylinePoints[0];
+
+        const centerPosition = this.findCenter(polylinePoints); 
+        const startPosition = polylinePoints[0];
         const endPosition = polylinePoints[polylinePoints.length-1]
-        console.log('points', polylinePoints);
+        //console.log('centerpoints', centerPosition);
+        //console.log('points', polylinePoints);
         // var polylinePoints = [
         //     [37.781814, -122.404740],
         //     [37.781719, -122.404637],
@@ -141,12 +154,12 @@ class Maps extends Component {
             <div>
                 <Map
                     style={{ height: "900px" }}
-                    center={position}
+                    center={centerPosition}
                     zoom={this.state.zoom}>
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
-                    <Marker position={position}>
+                    <Marker position={startPosition}>
                         <Popup>
                             <span>A pretty CSS3 popup. <br /> Easily customizable.</span>
                         </Popup>

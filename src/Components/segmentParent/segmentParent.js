@@ -64,8 +64,8 @@ class segmentParent extends React.Component {
     }
     
     componentDidMount(){
-        // const state = this.props.location.state
-        // console.log('state', state.id);
+        const state = this.props.location.state
+        console.log('state', state);
         
         // const { id } = this.props.match.params    
         // this.props.location.pathname = '/segments?id=' + state.id

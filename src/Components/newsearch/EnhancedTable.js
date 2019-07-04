@@ -21,6 +21,9 @@ import axios from 'axios';
 import PinDropIcon from '@material-ui/icons/PinDrop';
 import RemoveRedEye from '@material-ui/icons/RemoveRedEye';
 import { Route } from 'react-router-dom'
+import { ReactComponent as Map } from '../../assets/map.svg';
+import { ReactComponent as Pin } from '../../assets/pin.svg';
+
 
 
 
@@ -317,19 +320,29 @@ export default function EnhancedTable() {
                       </TableCell> */}
                         <TableCell component="th" id={labelId} scope="row" style={{ position: 'relative' }}>
                           <div>
-                            <PinDropIcon className="material-icons"
-                              style={{ position: 'absolute', bottom: '14px' }}
+                            <Pin
+                              style={{
+                                width: "36px",
+                                height: "36px",
+                                position: 'absolute',
+                                bottom: '5px'
+                              }}
                               onClick={event => handlePinClick(event, row)} />
-  
+
 
                             <Route render={({ history }) => (
-                              <RemoveRedEye
-                                style={{ position: 'absolute', left: '36px', bottom: '14px' }}
-                                onClick={() => { history.push(`/segment?id=${row.id}`, row) }} />
-                            )} />
-
-
-                            <div className="name" style={{ paddingLeft: '48px', }}>{row.name}</div>
+                              <Map
+                                style={{
+                                  width: "36px",
+                                  height: "36px",
+                                  position: 'absolute',
+                                  left: '48px',
+                                  bottom: '3px'
+                                }}
+                                onClick={() => { history.push(`/segment?id=${row.id}`, row) }}
+                              />
+                            )}/>
+                            <div className="name" style={{ paddingLeft: '68px', }}>{row.name}</div>
                           </div>
                         </TableCell>
                         <TableCell align="right">{(row.distance * 0.000621371).toFixedDown(2)} miles</TableCell>
