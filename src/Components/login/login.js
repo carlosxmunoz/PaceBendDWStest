@@ -19,6 +19,7 @@ class login extends React.Component {
 
     render() {
         const imageClick = () => {
+            console.log('ENV Variables', process.env);
             this.openUrl(process.env.REACT_APP_AUTH + process.env.REACT_APP_CLIENT_ID + "&redirect_uri=" + process.env.REACT_APP_REDIRECT_URI + process.env.REACT_APP_REPONSE_TYPE);
             window.close ();
         }
