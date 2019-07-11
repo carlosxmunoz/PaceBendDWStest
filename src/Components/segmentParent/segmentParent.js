@@ -32,8 +32,8 @@ class segmentParent extends React.Component {
         const queryString = require('query-string');
         var parsed = queryString.parse(this.props.location.search);
         // console.log('pasr', parsed);
-        // console.log('state.row.id', this.props.location.state.id);
-        let url = "http://66.68.130.115:5000/segment?SegId=" + parsed.id//this.props.location.state.id;
+        // console.log('state.row.id', this.props.location.state.id);        
+        let url = "https://fuckingmollysworld.com/api/segment?SegId=" + parsed.id//this.props.location.state.id;
         if (parsed.q) {
             url = url + "?q=" + parsed.q;
         }

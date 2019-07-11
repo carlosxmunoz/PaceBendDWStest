@@ -20,21 +20,11 @@ class searchResults extends React.Component {
         };
     }
 
-    // getData() {
-    //     axios.get("http://66.68.130.115:5000/search")
-    //         .then(response => {
-    //             return response.data;
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //         });
-    // }
-
     async  getJSONAsync() {
         const queryString = require('query-string');
         var parsed = queryString.parse(this.props.location.search);
         //console.log('parsed', parsed.q);
-        let url = "http://66.68.130.115:5000/search";
+        let url = "https://fuckingmollysworld.com/api/search";
         if (parsed.q) {
             url = url + "?q=" + parsed.q;
         }
@@ -42,9 +32,19 @@ class searchResults extends React.Component {
             url = url + "&size=" + parsed.size;
         }
 
+
+        let headers = {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json',
+        }
         //console.log('parsed', parsed);
         // The await keyword saves us from having to write a .then() block.    
-        let json = await axios.get(url)
+        let json = await axios.get(url, {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Content-Type': 'application/json',
+            }
+        })
             .then(response => {
                 //console.log('response.data', response.data);
                 this.setState({ data: response.data });

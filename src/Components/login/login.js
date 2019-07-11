@@ -26,7 +26,7 @@ class login extends React.Component {
         if (cookies.get('cuckie')) {
             return <Redirect to='/home' />
         }
-
+        console.log('environment variable',process.env)
         return (
             <div className="button-container">
                 <img

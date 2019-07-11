@@ -177,7 +177,7 @@ export default function EnhancedTable() {
   useEffect(() => {
     const queryString = require('query-string');
     var parsed = queryString.parse(window.location.search);
-    let url = "http://66.68.130.115:5000/search";
+    let url = "https://fuckingmollysworld.com/api/search";
     if (parsed.q) {
       url = url + "?q=" + parsed.q;
     }
