@@ -33,13 +33,15 @@ class segmentParent extends React.Component {
         var parsed = queryString.parse(this.props.location.search);
         // console.log('pasr', parsed);
         // console.log('state.row.id', this.props.location.state.id);        
-        let url = "https://fuckingmollysworld.com/api/segment?SegId=" + parsed.id//this.props.location.state.id;
+        let url = process.env.REACT_APP_BACKEND + "segment?SegId=" + parsed.id//this.props.location.state.id;
         if (parsed.q) {
             url = url + "?q=" + parsed.q;
         }
         if (parsed.size) {
             url = url + "&size=" + parsed.size;
         }
+        // console.log('url', url);
+        // console.log('environment variable', process.env.REACT_APP_BACKEND);
 
         //console.log('parsed', parsed);
         // The await keyword saves us from having to write a .then() block.    

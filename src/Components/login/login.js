@@ -19,14 +19,13 @@ class login extends React.Component {
 
     render() {
         const imageClick = () => {
-            this.openUrl("https://www.strava.com/oauth/authorize?client_id=33111&redirect_uri=https://www.austintrailstatus.com/&response_type=code&scope=read,read_all,profile:read_all,activity:read,activity:read_all");
+            this.openUrl(process.env.REACT_APP_AUTH + process.env.REACT_APP_CLIENT_ID + "&redirect_uri=" + process.env.REACT_APP_REDIRECT_URI + process.env.REACT_APP_REPONSE_TYPE);
             window.close ();
         }
         const cookies = new Cookies();
         if (cookies.get('cuckie')) {
             return <Redirect to='/home' />
         }
-        console.log('environment variable',process.env)
         return (
             <div className="button-container">
                 <img

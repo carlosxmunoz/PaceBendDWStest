@@ -24,7 +24,7 @@ class searchResults extends React.Component {
         const queryString = require('query-string');
         var parsed = queryString.parse(this.props.location.search);
         //console.log('parsed', parsed.q);
-        let url = "https://fuckingmollysworld.com/api/search";
+        let url = process.env.REACT_APP_BACKEND + "search";
         if (parsed.q) {
             url = url + "?q=" + parsed.q;
         }

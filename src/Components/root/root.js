@@ -13,7 +13,7 @@ class root extends React.Component {
         var parsed = queryString.parse(this.props.location.search);
 
         if (this.props.location.search) {
-            axios.get('https://fuckingmollysworld.com/api/login?bearer=' + parsed.code)
+            axios.get(process.env.REACT_APP_BACKEND + 'login?bearer=' + parsed.code)
                 .then(response => {
                     //console.log(response.data);
                     const cookies = new Cookies();

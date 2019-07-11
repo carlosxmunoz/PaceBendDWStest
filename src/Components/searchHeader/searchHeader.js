@@ -27,9 +27,13 @@ class searchHeader extends React.Component {
 
     search() {
         if (this.state && this.state.q) {
+            let queryString = "q=" + this.state.q;
+            //window.open("/search?q=" +this.state.q, "_self")
+            this.props.history.push(`/search?${queryString}`);
+            
             window.location.href = "search?q=" + this.state.q;
         }
-        window.location.href = "search";
+        //window.location.href = "search";
 
     }
 
