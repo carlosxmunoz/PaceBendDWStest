@@ -9,6 +9,7 @@ import root from './Components/root/root';
 import searchResults from './Components/searchResults/searchResults';
 import EnhancedTable from './Components/newsearch/EnhancedTable';
 import segmentParent from './Components/segmentParent/segmentParent';
+import paceBendParent from './Components/PaceBendParent/paceBendParent';
 
 import * as serviceWorker from './serviceWorker';
 // import components I want to use
@@ -24,6 +25,7 @@ const routing = (
 
             <Route exact path ="/home" component = {home} />
             <Route exact path ="/segment" component = {segmentParent} />
+            <Route exact path ="/pacebend" component = {paceBendParent} />
 
             {/* <Route exact path ="/auth/" component = {auth}/> */}
         </div>
