@@ -6,7 +6,6 @@ import searchHeader from './Components/searchHeader/searchHeader';
 import login from './Components/login/login';
 import home from './Components/home/home';
 import root from './Components/root/root';
-import searchResults from './Components/searchResults/searchResults';
 import EnhancedTable from './Components/newsearch/EnhancedTable';
 import segmentParent from './Components/segmentParent/segmentParent';
 import paceBendParent from './Components/PaceBendParent/paceBendParent';
@@ -19,12 +18,7 @@ const routing = (
         <div>
             <Route exact path = "/" component = {root} />
             <Route path = "/" component = {searchHeader} />
-            <Route path = "/login" component = {login} />
-            {/* <Route path = "/search" component = {searchResults} /> */}
-            <Route path = "/search" component = {EnhancedTable} />
-
             <Route exact path ="/home" component = {home} />
-            <Route exact path ="/segment" component = {segmentParent} />
             <Route exact path ="/pacebend" component = {paceBendParent} />
 
             {/* <Route exact path ="/auth/" component = {auth}/> */}

@@ -24,13 +24,7 @@ class home extends React.Component {
         
         //window.location.reload(true);
         
-        if (cookies.get('cuckie') == null) {
-            return <Redirect to='/login' />
-        } else {
-            return <Redirect to='/search' />
-        }
-
-        
+    
 
         return (
             <div className="home-container">
