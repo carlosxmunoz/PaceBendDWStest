@@ -12,10 +12,9 @@ import paceBendParent from './Components/PaceBendParent/paceBendParent';
 const routing = (
     <Router>
         <div>
-            <Route exact path = "/" component = {root} />
+            <Route path = "/" component = {paceBendParent} />
             <Route path = "/" component = {searchHeader} />
             <Route exact path ="/home" component = {home} />
-            <Route exact path ="/pacebend" component = {paceBendParent} />
 
             {/* <Route exact path ="/auth/" component = {auth}/> */}
         </div>
