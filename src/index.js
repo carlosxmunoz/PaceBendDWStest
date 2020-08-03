@@ -3,14 +3,10 @@ import ReactDOM from 'react-dom';
 import {Route, BrowserRouter as Router} from "react-router-dom";
 import './index.css';
 import searchHeader from './Components/searchHeader/searchHeader';
-import login from './Components/login/login';
 import home from './Components/home/home';
 import root from './Components/root/root';
-import EnhancedTable from './Components/newsearch/EnhancedTable';
-import segmentParent from './Components/segmentParent/segmentParent';
 import paceBendParent from './Components/PaceBendParent/paceBendParent';
 
-import * as serviceWorker from './serviceWorker';
 // import components I want to use
 
 const routing = (
@@ -32,4 +28,3 @@ ReactDOM.render(routing, document.getElementById('root'));
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
